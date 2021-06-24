@@ -1,0 +1,12 @@
+@import './styles/variables.scss';
+body {
+  background-color: $background-color;
+  color: $font-color;
+  margin: auto;
+  max-width: 840px;
+  padding: 30px;
+  box-sizing: border-box;
+}
+// .trending {
+//   color: blue
+// }

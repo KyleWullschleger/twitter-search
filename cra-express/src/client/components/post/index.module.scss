@@ -1,0 +1,22 @@
+@import '../../styles/variables.scss';
+
+.post {
+    padding: 5px 10px 18px 0;
+    display: flex;
+}
+
+.profile-image {
+    padding: 14px 11px 0 14px;
+    > img {
+        border-radius: 25px;
+    }
+}
+
+.user {
+    padding: 10px 0;
+    font-weight: 600;
+}
+
+.hashtags {
+    margin: 10px 0px 0px 0px;
+}

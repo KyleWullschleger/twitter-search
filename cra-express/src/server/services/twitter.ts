@@ -12,7 +12,6 @@ export default (twitterDataSource: TwitterDataSource) => {
             search
         });
 
-        console.log(postResponse)
         
         return {
             meta : {
