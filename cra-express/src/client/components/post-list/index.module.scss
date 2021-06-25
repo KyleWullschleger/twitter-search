@@ -1,10 +1,14 @@
 @import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
 
 .container {
     box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
+    min-height: 200px;
+    background-color: $white;
      > div {
-        &:nth-child(odd) {
-            background-color: $white;
+        &:nth-child(even) {
+            background-color: $background-color;
         }
     }
 }
@@ -17,4 +21,18 @@
     color: $font-color-highlight;
     cursor: pointer;
     padding: 30px;
+}
+
+.no-data {
+    margin: auto;
+    text-align: center;
+    padding: 20px;
+    & svg {
+        height: 50px;
+        width: 50px;
+    }
+}
+
+.spinner {
+    @include rotation-mixin;
 }

@@ -1,0 +1,13 @@
+@keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(359deg);
+    }
+  }
+
+@mixin rotation-mixin {
+    animation: rotation 1s;
+    animation-iteration-count: infinite;
+}

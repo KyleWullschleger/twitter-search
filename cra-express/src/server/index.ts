@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 import path from "path";
 import twitterService  from './services/twitter'
 import twitterDataSource  from './data-fetcher/twitter'
+import { ApiResponse, Posts } from "../types/api-type";
 
 const buildDir = path.join(process.cwd() + "/build");
 const app = express();
@@ -30,12 +31,29 @@ app.get('/api/twitter/posts/raw', async (req, res) => {
 
 app.get("/api/twitter/posts", async (req, res) => {
     const twitter = twitterService(twitterDataSource())
-    const results = await twitter.getPopularTweets({
-        search : req.query.q  as string
-    })
-
-    console.log(results)
-    return  res.json(results)
+    try {
+        const data = await twitter.getPopularTweets({
+            search : req.query.q  as string,
+            maxId : req.query.max_id as string, 
+        })
+        return res.json({
+            data,
+            status: "success",
+        } as ApiResponse<Posts>)
+    } catch (e) {
+        if(e instanceof Error) {
+            return res.json({
+                status: "failed",
+                error : e.message
+            } as ApiResponse<Posts>)
+        } else {
+            console.error("api/twitter/posts", e)
+            return res.json({
+                status: "failed",
+                error : "unknown failure"
+            } as ApiResponse<Posts>)
+        }
+    }
 });
 
 

@@ -1,28 +1,34 @@
 import React from 'react'
 import styles from './index.module.scss'
 import HashtagButton from '../hashtag-button/'
+import { useSelector } from 'react-redux'
+import { getPostById } from '../../store/posts/post-selector'
 
- const Post = ({id} : {
-    id: string
+ const PostDisplay = ({id} : {
+    id: number
 }) => {
+
+    const post = useSelector(getPostById(id));
 
     return <div className={styles.post}>
         <div className={styles['profile-image']}>
-            <img src={'https://pbs.twimg.com/profile_images/1013850694367916032/iWn_LbJA_normal.jpg'} />
+            <img src={post.profileImageURL} />
         </div>
         <div className={styles['post-content']}>
-            <header className={styles['user']} aria-describedby={'posted by'}>@texasdemocrats</header>
-            <text aria-describedby={'post content'}>
-                {`Greg Abbott vetoed a bill that would've ensured protection for dogs left in extreme weather conditions. \n\nIn wake o… https://t.co/sSJOJdZtIy`}
             
-            </text>
+            <header className={styles['user']} aria-describedby={'posted by'}><a href={post.url} target="_blank"> @{post.userName}</a></header>
+            
+            <div aria-describedby={'post content'}>
+                {post.text} 
+                {!!post.embeddedUrl && <a href={post.embeddedUrl} target="_blank">{post.embeddedUrl}</a> }
+            </div>
             
             <div className={styles['hashtags']}>
-                <HashtagButton hashtagText={"test"} />
+                { post.hashtags.map((hashtag, i )=> <HashtagButton key={i} hashtagText={hashtag} />)}
             </div>
             
         </div>
     </div>
 }
 
-export default React.memo(Post)
+export default React.memo(PostDisplay)

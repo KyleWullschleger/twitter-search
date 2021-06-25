@@ -3,6 +3,9 @@
 .post {
     padding: 5px 10px 18px 0;
     display: flex;
+    a {
+        color: $font-color-highlight;
+    }
 }
 
 .profile-image {
@@ -15,8 +18,15 @@
 .user {
     padding: 10px 0;
     font-weight: 600;
+    a {
+        text-decoration: none;
+        color: $font-color;
+    }
 }
 
 .hashtags {
-    margin: 10px 0px 0px 0px;
+    margin: 10px 10px 10px 0px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
 }
