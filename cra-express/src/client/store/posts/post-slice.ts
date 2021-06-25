@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { RootState } from '..';
-import { Post, MetaData, Posts, ApiResponse,  } from '../../../types/api-type'
+import { Post, MetaData, Posts, ApiResponse,  } from '../../../types/api.type'
 
 export type TwitterState = {
     posts : Post[]
@@ -96,3 +96,26 @@ const twitterSlice = createSlice({
 export const { updateSearch, addFilter, removeFilter } = twitterSlice.actions;
 
 export default twitterSlice.reducer;
+
+/*
+  Note to reviewers:
+  This is using the newer redux toolkit, but you can achieve the same thing doing the old fashion way.
+  Just have to make sure you are being stateless and not updating the state directly
+
+  You would create a function like this and put it on the store 
+   (state : TwitterState = initalState, action : ActionType) : TwitterState => {
+    const { payload, type } = action;
+
+    switch(type) {
+      case UPDATE_SEARCH:
+          return {...state, search:payload};
+      case ADD_FILTER:
+          return { 
+              ...state, 
+              filter : [...state.filter, action.payload]
+          };
+    
+    ect .... 
+
+    dispatch would then be dispatch({type : UPDATE_SEARCH, payload: data}) instead of passing in a function
+*/

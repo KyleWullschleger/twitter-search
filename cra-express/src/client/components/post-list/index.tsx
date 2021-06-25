@@ -4,7 +4,7 @@ import styles from './index.module.scss';
 import LoadMore from './load-more';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchPosts } from '../../store/posts/post-slice';
-import { Post } from '../../../types/api-type';
+import { Post } from '../../../types/api.type';
 import { RootState } from '../../store';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import { getPostsByFilteredHashtags } from '../../store/posts/post-selector';
