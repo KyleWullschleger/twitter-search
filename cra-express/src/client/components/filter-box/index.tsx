@@ -4,7 +4,7 @@ import HashtagButton from '../hashtag-button/';
 import { useSelector} from 'react-redux';
 import { getUniqueHashtags } from '../../store/posts/post-selector';
 
-export default () => {
+const FilterBox = () => {
     const hashtags = useSelector(getUniqueHashtags());
     const uniqueHashtags = useMemo(() => Array.from(new Set(hashtags.flat())), [hashtags]);
     
@@ -13,8 +13,10 @@ export default () => {
 
         <div  className={styles['hashtags']}>
             {uniqueHashtags.map((hashtag, i) => {
-                return <span className={styles['hashtag']}><HashtagButton hashtagText={hashtag} key={i} /> </span>
+                return <span key={`container_${i}`} className={styles['hashtag']}><HashtagButton hashtagText={hashtag} key={i} /> </span>
             })}
         </div>
     </div>
 }
+
+export default FilterBox;

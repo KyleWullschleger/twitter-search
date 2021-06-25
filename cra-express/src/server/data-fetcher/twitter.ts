@@ -3,8 +3,8 @@ import querystring from 'querystring'
 import { TwitterDataSource } from '../../types/twitter.type'
 import { getConfig } from '../configuration'
 
-const RESULT_TYPE = "popular"
-const TWITTER_API_URL = 'https://api.twitter.com/1.1'
+const RESULT_TYPE = "popular";
+const TWITTER_API_URL = 'https://api.twitter.com/1.1';
 
 
 export default () : TwitterDataSource => {

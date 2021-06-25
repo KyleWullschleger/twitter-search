@@ -9,14 +9,14 @@ import { RootState } from '../../store';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import { getPostsByFilteredHashtags } from '../../store/posts/post-selector';
 
-export default () => {
+const PostList = () => {
     const dispatch = useDispatch();
     const posts = useSelector(getPostsByFilteredHashtags());
     const search = useSelector((state: RootState) => state.postData.search);
 
     useEffect(() => {
         dispatch(fetchPosts(search));
-    }, [search]);
+    }, [search, dispatch]);
 
     const NoData = () => {
         return <div className={styles['no-data']}>
@@ -27,7 +27,7 @@ export default () => {
 
     const DisplayPosts = () => {
         return <>
-            {posts.map((post : Post, i) =>  <PostDisplay id={post.id} key={i} />)}
+            {posts.map((post : Post, i : number) =>  <PostDisplay id={post.id} key={i} />)}
         </>
     }
     
@@ -38,4 +38,6 @@ export default () => {
 
             <LoadMore />
     </div>
-}
+};
+
+export default PostList;

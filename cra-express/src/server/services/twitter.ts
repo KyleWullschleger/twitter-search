@@ -1,5 +1,5 @@
-import { TwitterDataSource } from '../../types/twitter-type'
-import { Posts } from '../../types/api-type'
+import { TwitterDataSource } from '../../types/twitter.type'
+import { Posts } from '../../types/api.type'
 import { parse } from "querystring"
 
 export default (twitterDataSource: TwitterDataSource) => {
@@ -36,7 +36,7 @@ export default (twitterDataSource: TwitterDataSource) => {
                     displayUrl: status.user.url,
                     userName: status.user.screen_name,
                     hashtags: status.entities.hashtags.map(hashtag => hashtag.text)
-                }
+                };
             }),
             
         };

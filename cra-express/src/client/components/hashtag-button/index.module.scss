@@ -7,8 +7,13 @@
     color: $font-color-highlight;
     cursor: pointer;
     padding: 11px 17px;
+
+    &:hover {
+        opacity: .7;
+    }
 }
 
 .dark {
     background-color: #99abba;
+    color: $white;
 }

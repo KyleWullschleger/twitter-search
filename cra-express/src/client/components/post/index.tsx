@@ -12,15 +12,15 @@ import { getPostById } from '../../store/posts/post-selector'
 
     return <div className={styles.post}>
         <div className={styles['profile-image']}>
-            <img src={post.profileImageURL} />
+            <img src={post.profileImageURL} alt={'Profile Pic'}/>
         </div>
         <div className={styles['post-content']}>
             
-            <header className={styles['user']} aria-describedby={'posted by'}><a href={post.url} target="_blank"> @{post.userName}</a></header>
+            <header className={styles['user']} aria-describedby={'posted by'}><a href={post.url} rel="noreferrer" target="_blank"> @{post.userName}</a></header>
             
             <div aria-describedby={'post content'}>
                 {post.text} 
-                {!!post.embeddedUrl && <a href={post.embeddedUrl} target="_blank">{post.embeddedUrl}</a> }
+                {!!post.embeddedUrl && <a href={post.embeddedUrl} rel="noreferrer" target="_blank">{post.embeddedUrl}</a> }
             </div>
             
             <div className={styles['hashtags']}>

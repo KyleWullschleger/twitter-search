@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styles from './index.module.scss';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../store';
@@ -11,10 +11,6 @@ const HashtagButton = ({ hashtagText } : {
 }) => {
     const hashtagFilters = useSelector((state: RootState) => state.postData.filter);
     const dispatch = useDispatch();
-
-    useEffect(() => {
-        console.log(hashtagFilters)
-    }, [hashtagFilters])
 
     const onClick = () => {
         if(hashtagFilters.includes(hashtagText)) {
