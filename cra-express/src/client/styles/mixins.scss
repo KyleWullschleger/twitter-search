@@ -11,3 +11,9 @@
     animation: rotation 1s;
     animation-iteration-count: infinite;
 }
+
+@mixin for-phone-only {
+  @media screen and (max-width: 620px),
+          screen and (max-height: 500px)
+  { @content; }
+}
