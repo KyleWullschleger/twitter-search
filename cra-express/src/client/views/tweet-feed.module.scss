@@ -1,7 +1,6 @@
 @import '../styles/variables.scss';
 @import '../styles/mixins.scss';
 
-
 $sideContentWidth: 247px;
 $gap: 20px;
 
@@ -42,19 +41,6 @@ $gap: 20px;
 .header {
     @include for-phone-only {
         padding: 20px 0 0 20px;
-    }
-}
-
-.main {
-    width: 551px;
-    > div {
-        margin: $gap 0;
-        &:first-of-type {
-            margin-top: 0;
-        }
-    }
-    @include for-phone-only {
-        width: 100%;
     }
 }
 
