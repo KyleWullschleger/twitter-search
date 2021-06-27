@@ -1,44 +1,72 @@
 @import '../styles/variables.scss';
+@import '../styles/mixins.scss';
+
+
+$sideContentWidth: 247px;
+$gap: 20px;
 
 .container {
     display: flex;
-    gap: 20px;
+    grid-gap: $gap;
+    gap: $gap;
+    flex-wrap: wrap;
+    position: relative;
+    padding-right: $sideContentWidth + $gap;
+    
     > div {
+        flex-basis: 100%;
         &:first-of-type {
             margin-left: 0;
         }
     }
-    @media only screen and (max-width: 626px) {
+    @include for-phone-only {
         flex-direction: column;
+        padding-right: 0;
+    }
+}
+
+.search {
+    @include for-phone-only {
+        padding: 0 20px;
+        height: 53px;
+    }
+}
+
+.header {
+    padding-top: 20px;
+    @include for-phone-only {
+        padding: 20px 0 0 20px;
+    }
+}
+
+.header {
+    @include for-phone-only {
+        padding: 20px 0 0 20px;
     }
 }
 
 .main {
-    max-width: 551px;
+    width: 551px;
     > div {
-        margin: 20px 0;
+        margin: $gap 0;
         &:first-of-type {
             margin-top: 0;
         }
     }
-    @media only screen and (max-width: 626px) {
+    @include for-phone-only {
         width: 100%;
-        max-width: unset;
-    }
-    @media only screen and (min-width: 780px) {
-        width: 551px;
-        max-width: unset;
     }
 }
 
 .side-content {
-    max-width: 247px;
-    @media only screen and (max-width: 626px) {
+    width: $sideContentWidth;
+    position: absolute;
+    right: 0;
+    min-height: 300px;
+    @include for-phone-only {
+        position: relative;
         width: 100%;
         max-width: unset;
-    }
-    @media only screen and (min-width: 780px) {
-        width: 247px;
-        max-width: unset;
+        min-height: 100px;
     }
 }
