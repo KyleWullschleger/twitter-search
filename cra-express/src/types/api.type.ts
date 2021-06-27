@@ -8,7 +8,7 @@ export type Post = {
     text: string
     userName: string
     url?: string
-    embeddedUrl? : string
+    embeddedUrl? : string[]
     displayUrl? : string
     profileImageURL: string
     hashtags: string[]

@@ -19,8 +19,10 @@ import { getPostById } from '../../store/posts/post-selector'
             <header className={styles['user']} aria-describedby={'posted by'}><a href={post.url} rel="noreferrer" target="_blank"> @{post.userName}</a></header>
             
             <div aria-describedby={'post content'}>
-                {post.text} 
-                {!!post.embeddedUrl && <a href={post.embeddedUrl} rel="noreferrer" target="_blank">{post.embeddedUrl}</a> }
+                <span className={styles['content']}>{post.text} </span>
+                {post.embeddedUrl?.map(url => {
+                    return <a href={url} rel="noreferrer" target="_blank">{url}</a>  
+                })}
             </div>
             
             <div className={styles['hashtags']}>
