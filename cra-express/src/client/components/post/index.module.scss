@@ -5,6 +5,13 @@
     display: flex;
     a {
         color: $font-color-highlight;
+        padding-right: 6px;
+    }
+}
+
+.content {
+    :after {
+        content: ' ';
     }
 }
 
